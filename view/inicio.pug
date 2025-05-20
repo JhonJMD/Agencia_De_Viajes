@@ -1,2 +1,76 @@
-block head
+extends ./layout/index
+
+block contenido
+    main.container.mt-5
+        .row
+            .col-md-5
+                img(src="/img/inicio_nosotros.jpg", alt="imagen sobre nosotros", class="img-fluid")
+            .col-md-7
+                h1 #{page}
+                p Descubre los mejores destinos de viaje con nosotros. Encuentra experiencias inolvidables y planifica tu próxima aventura.
+                
+                p Ofrecemos los mejores precios y servicios para que disfrutes de unas vacaciones perfectas. Nuestro equipo está especializado en destinos nacionales e internacionales.
+
+    .listado-iconos
+        .container.mt-5.py-5.text-center
+            .row    
+                .col-md-4
+                    img(src="/img/icono_seguridad.svg", alt="icono seguridad", class="img-fluid mb-4")
+                    h2.mb-4 Seguridad
+                    p Viaja con tranquilidad. Todos nuestros paquetes incluyen seguros de viaje y asistencia 24/7 para cualquier imprevisto.
+
+                .col-md-4
+                    img(src="/img/icono_destinos.svg", alt="icono destinos", class="img-fluid mb-4")
+                    h2.mb-4 Mejores Destinos
+                    p Ofrecemos los destinos más populares y exclusivos alrededor del mundo, con experiencias únicas y personalizadas.
+
+                .col-md-4
+                    img(src="/img/icono_precios.svg", alt="icono precios", class="img-fluid mb-4")
+                    h2.mb-4 Los Mejores Precios
+                    p Garantizamos las mejores tarifas del mercado con opciones para todos los presupuestos y facilidades de pago.
     
+    .container
+        h2.mt-5.text-center Próximos Viajes
+        .row.proximos-viajes
+            if viajes && viajes.length > 0
+                each viaje in viajes
+                    .col-md-4.mb-4
+                        .card
+                            img.card-img-top(src=`img/destinos_${viaje.imagen}.jpg`, alt=`Imagen de ${viaje.titulo}`)
+                            .card-body
+                                h3= viaje.titulo
+                                p
+                                    i.fas.fa-calendar-alt
+                                    |  #{viaje.fecha_ida} - #{viaje.fecha_vuelta}
+                                p
+                                    i.fas.fa-dollar-sign
+                                    |  #{viaje.precio}
+                                p= viaje.descripcion.substring(0, 100) + '...'
+                                a(href=`/viajes/${viaje.slug}`, class="btn btn-success btn-block") Más Información
+            else
+                p.text-center No hay viajes disponibles
+
+    .descuento
+        .container
+            .row
+                .col-md-6
+                    .contenido
+                        h3.titulo ¡Descuento Especial!
+                        p.fecha Viaja en Octubre 2025
+                        p.precio $200 descuento por persona
+
+    .container
+        h2.mt-5.text-center Testimoniales
+        .row.testimoniales
+            if testimoniales && testimoniales.length > 0
+                each testimonial in testimoniales
+                    .col-md-4.mb-4
+                        .card
+                            .card-body
+                                blockquote.blockquote
+                                    p.mb-0
+                                        | #{testimonial.mensaje}
+                                    footer.blockquote-footer
+                                        | #{testimonial.nombre}
+            else
+                p.text-center No hay testimoniales aún

@@ -1,14 +1,14 @@
-import Sequelizer from "sequelizer";
+import { DataTypes } from "sequelize";
 import db from "../config/db.js";
 
 export const Testimonial = db.define('testimoniales', {
     nombre: {
-        type: Sequelizer.STRING
+        type: DataTypes.STRING
     },
     correo: {
-        type: Sequelizer.STRING
+        type: DataTypes.STRING
     },
     mensaje: {
-        type: Sequelizer.STRING
+        type: DataTypes.STRING
     }
-})
+});

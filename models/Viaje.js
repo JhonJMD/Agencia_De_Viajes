@@ -1,29 +1,26 @@
-import Sequelizer from "sequelizer";
+import { DataTypes } from "sequelize";
 import db from "../config/db.js";
 
 export const Viaje = db.define('viajes', {
     titulo: {
-        type: Sequelizer.STRING
+        type: DataTypes.STRING
     },
     precio: {
-        type: Sequelizer.STRING
+        type: DataTypes.STRING
     },
     fecha_ida: {
-        type: Sequelizer.DATE
+        type: DataTypes.DATE
     },
     fecha_vuelta: {
-        type: Sequelizer.DATE
+        type: DataTypes.DATE
     },
     imagen: {
-        type: Sequelizer.STRING
+        type: DataTypes.STRING
     },
     descripcion: {
-        type: Sequelizer.STRING
-    },
-    disponible: {
-        type: Sequelizer.STRING
+        type: DataTypes.STRING
     },
     slug: {
-        type: Sequelizer.STRING
+        type: DataTypes.STRING
     }
-})
+});

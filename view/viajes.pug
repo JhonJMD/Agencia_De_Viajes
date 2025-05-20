@@ -1,0 +1,24 @@
+extends ./layout/index
+
+block contenido
+    main.container.mt-5
+        h1.text-center.mt-5 #{pagina}
+        
+        .row.proximos-viajes
+            if viajes && viajes.length > 0
+                each viaje in viajes
+                    .col-md-4.mb-4
+                        .card
+                            img.card-img-top(src=`/img/destinos_${viaje.imagen}.jpg`, alt=`Imagen de ${viaje.titulo}`)
+                            .card-body
+                                h3= viaje.titulo
+                                p
+                                    i.fas.fa-calendar-alt
+                                    |  #{viaje.fecha_ida} - #{viaje.fecha_vuelta}
+                                p
+                                    i.fas.fa-dollar-sign
+                                    |  #{viaje.precio}
+                                p= viaje.descripcion.substring(0, 100) + '...'
+                                a(href=`/viajes/${viaje.slug}`, class="btn btn-success btn-block") Más Información
+            else
+                p.text-center No hay viajes disponibles

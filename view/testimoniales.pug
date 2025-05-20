@@ -1,0 +1,44 @@
+extends ./layout/index
+
+block contenido
+    main.container.mt-5
+        h1.text-center.mt-5 #{pagina}
+
+        .row
+            .col-md-12
+                h2.d-block.w-100.text-center Agrega un Testimonial
+
+                if(errores)
+                    each error in errores
+                        .alert.alert-danger.text-center= error.mensaje
+                
+                .row.justify-content-center
+                    .col-md-8
+                        form(action="/testimoniales" method="POST")
+                            .form-group
+                                label(for="nombre") Nombre
+                                input#nombre.form-control(type="text", placeholder="Tu Nombre", name="nombre", value= nombre ? nombre : '')
+                            
+                            .form-group
+                                label(for="correo") Correo Electrónico
+                                input#correo.form-control(type="email", placeholder="Tu Correo", name="correo", value= correo ? correo : '')
+                            
+                            .form-group
+                                label(for="mensaje") Mensaje
+                                textarea#mensaje.form-control(placeholder="Tu Mensaje", name="mensaje", rows=3)= mensaje ? mensaje : ''
+                            
+                            input.btn.btn-success.btn-block(type="submit", value="Enviar")
+
+        .row.testimoniales.mt-5
+            if testimoniales && testimoniales.length > 0
+                each testimonial in testimoniales
+                    .col-md-6.col-lg-4.mb-4
+                        .card
+                            .card-body
+                                blockquote.blockquote
+                                    p.mb-0
+                                        | #{testimonial.mensaje}
+                                    footer.blockquote-footer
+                                        | #{testimonial.nombre}
+            else
+                p.text-center No hay testimoniales aún

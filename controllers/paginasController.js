@@ -1,5 +1,5 @@
-import { Viaje } from "../models/Viaje";
-import { Testimonial } from "../models/Testimonial";
+import { Viaje } from "../models/Viaje.js";
+import { Testimonial } from "../models/Testimonial.js";
 
 const paginaInicio = async (req, res) => {
     const promises = []; // Array para almacenar las promesas de consultas a la base de datos

@@ -1,8 +1,8 @@
-import Sequelizer from "sequelizer";
+import { Sequelize } from "sequelize";
 
-const db = new Sequelizer('agenciaviajes', 'root', '1607', {
+const db = new Sequelize('agenciaviajes', 'desarrollo', 'yucaconsuero2023', {
     host: 'localhost',
-    port: 3406,
+    port: 3306,
     dialect: 'mysql',
     define: {
         timestamps: false
