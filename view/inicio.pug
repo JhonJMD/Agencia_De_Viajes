@@ -1,6 +1,12 @@
 extends ./layout/index
 
 block contenido
+    // Hero section con imagen de fondo a pantalla completa
+    .slider
+        h1 Río de Janeiro
+        em aventura
+
+    // Resto del contenido
     main.container.mt-5
         .row
             .col-md-5
@@ -36,7 +42,7 @@ block contenido
                 each viaje in viajes
                     .col-md-4.mb-4
                         .card
-                            img.card-img-top(src=`img/destinos_${viaje.imagen}.jpg`, alt=`Imagen de ${viaje.titulo}`)
+                            img.card-img-top(src=`/img/destinos_${viaje.imagen}.jpg`, alt=`Imagen de ${viaje.titulo}`)
                             .card-body
                                 h3= viaje.titulo
                                 p
